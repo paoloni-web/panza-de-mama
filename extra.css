@@ -1,5 +1,5 @@
 /* Añadidos al CSS original: elementos que pide el blueprint de Franco y que el original no tiene. */
-.hero-img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);margin:4px 0 18px;box-shadow:var(--shadow)}
+.hero-img{width:100%;aspect-ratio:16/10;max-height:240px;object-fit:cover;object-position:center 30%;border-radius:var(--radius);margin:4px 0 18px;box-shadow:var(--shadow)}
 .info-box{background:#FFF8EC;border:1px solid rgba(212,168,83,.35);border-radius:var(--radius-sm);padding:12px 14px;font-size:13.5px;line-height:1.5;color:var(--charcoal);margin:0 0 18px}
 .age-grid .img-opt{padding:8px 8px 12px}
 .img-opt img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block;margin-bottom:8px;background:#F5EDEE}
@@ -38,3 +38,5 @@ a.offer-cta-white,a.btn{display:block;text-align:center;text-decoration:none;box
 .vid-sound{position:absolute;left:50%;top:44%;transform:translateX(-50%);border:0;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;font:600 13px 'DM Sans',sans-serif;padding:8px 14px;cursor:pointer}
 .disclaimer{font-size:11px;line-height:1.5;color:var(--mid);background:#fff;border-radius:var(--radius-sm);padding:12px 14px;margin:14px 0 28px;border:1px solid #EDE0DC}
 @media (prefers-reduced-motion:reduce){.btn-pulse{animation:none!important}.screen{animation:none!important}}
+
+.mockup,.hero-img,img[width][height]{height:auto}

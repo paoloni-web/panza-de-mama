@@ -62,7 +62,7 @@
     window.scrollTo(0, 0);
     if (n === 12) renderPeso();
     if (n === 13) onAlturaChange(state.altura);
-    if (n === 14) onIdealChange(state.ideal);
+    if (n === 14) { if (state.ideal >= state.peso || state.peso - state.ideal > 40) state.ideal = Math.max(40, state.peso - 8); onIdealChange(show(state.ideal)); }
     if (n === 17) loadAnim();
     if (n === 19) buildResult();
     if (n === 22) buildOffer();
