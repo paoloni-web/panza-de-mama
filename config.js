@@ -9,10 +9,11 @@ window.DIA_CONFIG = {
   META_PIXEL_ID: "",
 
   // Checkout principal (USD 9) en KashPay con 2 order bumps (Acceso prioritario 4 · Menú Desinflama 5) y embudo upsell 47 → downsell 23.
-  CHECKOUT_URL: "https://whop.com/checkout/plan_q3DBr2yendDa7", // respaldo Whop (sin bumps) hasta tener el checkout de KashPay
+  CHECKOUT_URL: "https://pay.sheridanmktmng.com/checkout/checkout-1793482483926",
+  // Respaldo sin bumps (Whop directo): https://whop.com/checkout/plan_q3DBr2yendDa7
   // Upsell / downsell one-click de KashPay (tokens del embudo). Respaldo Whop abajo.
-  KP_UPSELL: "",
-  KP_DOWNSELL: "",
+  KP_UPSELL: "https://pay.sheridanmktmng.com/u/ca25a0fa179b51b4",   // "Funnel Panza de Mamá 21" (ID 9656e10d-…)
+  KP_DOWNSELL: "https://pay.sheridanmktmng.com/u/f250aa87d976b3ad",
   UPSELL_URL: "https://whop.com/checkout/plan_94up9Yeti6vpv",   // Plan Abdomen Firme 90 · USD 47 (respaldo, cobro aparte)
   DOWNSELL_URL: "https://whop.com/checkout/plan_XaXUkxZWoj2tU", // mismo plan · USD 23 (respaldo)
 
