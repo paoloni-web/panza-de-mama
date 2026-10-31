@@ -1,0 +1,40 @@
+/* Añadidos al CSS original: elementos que pide el blueprint de Franco y que el original no tiene. */
+.hero-img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);margin:4px 0 18px;box-shadow:var(--shadow)}
+.info-box{background:#FFF8EC;border:1px solid rgba(212,168,83,.35);border-radius:var(--radius-sm);padding:12px 14px;font-size:13.5px;line-height:1.5;color:var(--charcoal);margin:0 0 18px}
+.age-grid .img-opt{padding:8px 8px 12px}
+.img-opt img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block;margin-bottom:8px;background:#F5EDEE}
+.img-opt.span-2{grid-column:1 / -1;max-width:50%;justify-self:center;width:100%}
+.unit-toggle{display:flex;gap:0;justify-content:center;margin:0 auto 14px;background:#F5EDEE;border-radius:999px;padding:4px;width:max-content}
+.unit-toggle button{border:0;background:transparent;font:600 15px 'DM Sans',sans-serif;padding:8px 22px;border-radius:999px;color:var(--mid);cursor:pointer;min-height:40px}
+.unit-toggle button.on{background:var(--rose);color:#fff}
+.inp-err{color:#B3261E;font-size:13px;margin-top:6px}
+.grad-title{background:linear-gradient(135deg,var(--rose),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-family:'Playfair Display',serif;font-size:22px;font-weight:900;margin-bottom:6px}
+.tiny-note{font-size:11px;color:var(--mid);margin-top:10px;line-height:1.4}
+.tiny-note.center{text-align:center;margin:6px 0 16px}
+.alert-card{background:#FFF4E5;border:1px solid #F0B45A;border-left:5px solid #E08A00;border-radius:var(--radius-sm);padding:14px 16px;margin:0 0 18px;font-size:13.5px;line-height:1.5;color:var(--charcoal)}
+.alert-title{font-weight:700;margin-bottom:6px}
+.alert-card ul{margin:6px 0 0;padding-left:18px}
+.testi-note{font-size:11px;color:var(--light-mid);text-align:center;margin:-6px 0 16px}
+.offer-h1{font-family:'Playfair Display',serif;font-size:24px;line-height:1.25;color:var(--charcoal);margin:6px 0 0}
+.mockup{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius);display:block;margin:0 auto 16px;box-shadow:var(--shadow)}
+.hoy-card{display:flex;gap:10px;margin-bottom:4px}
+.hoy-col{flex:0 0 calc(50% - 5px);width:calc(50% - 5px);background:#fff;border-radius:var(--radius-sm);padding:12px;box-shadow:var(--shadow)}
+.hoy-head{font-weight:700;text-align:center;border-radius:8px;padding:6px;margin-bottom:10px;color:#fff;font-size:14px}
+.hoy-head.red{background:#C62828}.hoy-head.green{background:#2E7D32}
+.lvl{font-size:11.5px;color:var(--mid);margin-bottom:9px}
+.lvl-bar{height:8px;background:#EEE6E3;border-radius:6px;overflow:hidden;margin:4px 0 2px}
+.lvl-bar i{display:block;height:100%;border-radius:6px}
+.lvl-bar i.r{background:#D32F2F}.lvl-bar i.g{background:#43A047}
+.lvl b{font-size:11.5px}.lvl b.r{color:#C62828}.lvl b.g{color:#2E7D32}
+.stack-total{text-align:center;color:#fff;opacity:.9;font-size:14px;margin:6px 0 4px}
+.today-only{text-align:center;background:rgba(255,255,255,.18);color:#fff;font-weight:700;border-radius:999px;padding:6px 12px;width:max-content;margin:8px auto 0;font-size:13px}
+.timer{text-align:center;color:#fff;font-size:14px;margin:4px 0 14px}
+.timer b{font-variant-numeric:tabular-nums;font-size:18px;background:rgba(0,0,0,.18);padding:2px 8px;border-radius:6px}
+a.offer-cta-white,a.btn{display:block;text-align:center;text-decoration:none;box-sizing:border-box}
+.video-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.vid{margin:0;position:relative}
+.vid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--radius-sm);background:#000;display:block}
+.vid figcaption{font-size:12px;text-align:center;color:var(--mid);margin-top:4px}
+.vid-sound{position:absolute;left:50%;top:44%;transform:translateX(-50%);border:0;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;font:600 13px 'DM Sans',sans-serif;padding:8px 14px;cursor:pointer}
+.disclaimer{font-size:11px;line-height:1.5;color:var(--mid);background:#fff;border-radius:var(--radius-sm);padding:12px 14px;margin:14px 0 28px;border:1px solid #EDE0DC}
+@media (prefers-reduced-motion:reduce){.btn-pulse{animation:none!important}.screen{animation:none!important}}

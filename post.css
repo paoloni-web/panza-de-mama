@@ -1,0 +1,18 @@
+/* Páginas después del pago (upsell, downsell, gracias), con la misma estética del quiz. */
+.post{padding-top:18px;padding-bottom:28px}
+.step{font-size:12.5px;color:var(--mid);margin-bottom:12px}
+.step i{display:block;height:6px;border-radius:6px;background:#EEE6E3;margin-top:6px;position:relative;overflow:hidden}
+.step i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--rose);border-radius:6px}
+.okbadge{display:inline-block;background:#E7F4EC;color:#2E7D32;font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px}
+.post .sub{margin:10px 0 16px}
+.post-list{list-style:none;padding:0;margin:0 0 16px}
+.post-list li{padding:10px 0 10px 30px;position:relative;border-bottom:1px solid #EDE0DC;font-size:15px;line-height:1.45}
+.post-list li::before{content:"✓";position:absolute;left:4px;top:10px;color:var(--rose);font-weight:900}
+.post-price{text-align:center;background:#fff;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:16px}
+.post-price .was{color:var(--mid);font-size:14px}
+.post-price .now{font:900 44px/1.1 'Playfair Display',serif;color:var(--rose-dark)}
+.post-price .now small{font-size:18px}
+.post-price p{font-size:13px;color:var(--mid);margin-top:6px}
+.no-btn{display:block;width:100%;background:none;border:0;color:var(--mid);text-decoration:underline;font:500 14px 'DM Sans',sans-serif;margin:14px 0 0;padding:10px;cursor:pointer;text-align:center}
+.post-card{background:#fff;border-radius:var(--radius-sm);padding:14px 16px;margin-top:14px;font-size:14.5px;line-height:1.5;box-shadow:var(--shadow)}
+.post-card ol{margin:8px 0 6px;padding-left:20px}

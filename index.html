@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#C8556A">
+<title>Reto Panza de Mamá 21 · Test gratuito</title>
+<meta name="description" content="Test de 2 minutos: descubre por qué tu panza no vuelve después del parto y tu plan de 10 minutos al día.">
+<meta property="og:title" content="¿Tu panza no vuelve después del parto? Haz el test de 2 minutos">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="styles.css?v=1">
+<link rel="stylesheet" href="extra.css?v=1">
+<script src="config.js?v=1"></script>
+</head>
+<body>
+
+<div class="progress-wrap" id="progressWrap" style="display:none">
+  <div class="progress-label">
+    <span>Tu diagnóstico personalizado</span>
+    <span id="pPct">0%</span>
+  </div>
+  <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pTrack">
+    <div class="progress-fill" id="pFill"></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ETAPA 0: PORTADA (hace de landing, Franco L 2.4) -->
+  <div class="screen active" id="s0" data-name="portada">
+    <div class="badge">🩺 Test gratuito · 2 minutos</div>
+    <h1 class="h1">¿Tu panza no vuelve después del parto? <em>No es falta de ejercicio.</em></h1>
+    <p class="sub">Descubre en 2 minutos <strong>por qué tu panza sigue abultada</strong> aunque hagas todo bien, y el reto de 10 minutos al día para reactivar tu abdomen en 21 días.</p>
+    <img class="hero-img" src="img/hero.jpg" width="768" height="768" alt="Mamá sonriendo con su bebé en casa">
+    <div class="sym-list">
+      <div class="sym-title">¿Tienes alguno de estos síntomas?</div>
+      <div class="sym-item"><div class="sym-dot"></div>Panza inflada que no baja ni con dieta</div>
+      <div class="sym-item"><div class="sym-dot"></div>Se te sale la pipí al reír, estornudar o brincar</div>
+      <div class="sym-item"><div class="sym-dot"></div>Panza flácida y caída después del parto</div>
+      <div class="sym-item"><div class="sym-dot"></div>Dolor de espalda que no se quita</div>
+      <div class="sym-item"><div class="sym-dot"></div>Panza que parece que sigues embarazada</div>
+    </div>
+    <div class="info-box">Puede ser <strong>diástasis</strong>: los músculos del abdomen se separan durante el embarazo y no siempre vuelven solos a su lugar. Le pasa a 6 de cada 10 mamás.</div>
+    <button class="btn btn-pulse" onclick="go(1)">DESCUBRIR MI TIPO DE PANZA DE MAMÁ →</button>
+    <p class="privacy">🔒 Tus respuestas son 100 % privadas y anónimas</p>
+  </div>
+
+  <!-- ETAPA 1: EDAD (con foto 1:1, Franco L 4.2) -->
+  <div class="screen" id="s1" data-name="edad">
+    <button class="back" onclick="go(0)">← Atrás</button>
+    <div class="q-tag">Pregunta 1 de 12</div>
+    <h2 class="q-title">¿Cuántos años tienes?</h2>
+    <p class="q-sub">Nos ayuda a entender tu momento y armar el camino ideal para ti.</p>
+    <div class="grid-2 age-grid">
+      <div class="grid-opt img-opt" data-value="18-25" onclick="pickGrid(this,2,'edad')"><img src="img/age1.jpg" alt="" loading="lazy"><div class="grid-opt-label">18 a 25</div></div>
+      <div class="grid-opt img-opt" data-value="26-32" onclick="pickGrid(this,2,'edad')"><img src="img/age2.jpg" alt="" loading="lazy"><div class="grid-opt-label">26 a 32</div></div>
+      <div class="grid-opt img-opt" data-value="33-39" onclick="pickGrid(this,2,'edad')"><img src="img/age3.jpg" alt="" loading="lazy"><div class="grid-opt-label">33 a 39</div></div>
+      <div class="grid-opt img-opt" data-value="40-48" onclick="pickGrid(this,2,'edad')"><img src="img/age4.jpg" alt="" loading="lazy"><div class="grid-opt-label">40 a 48</div></div>
+      <div class="grid-opt img-opt span-2" data-value="49+" onclick="pickGrid(this,2,'edad')"><img src="img/age5.jpg" alt="" loading="lazy"><div class="grid-opt-label">49 o más</div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 2: TIEMPO DESDE EL PARTO -->
+  <div class="screen" id="s2" data-name="tiempo_parto">
+    <button class="back" onclick="go(1)">← Atrás</button>
+    <div class="q-tag">Pregunta 2 de 12</div>
+    <h2 class="q-title">¿Hace cuánto tuviste a tu último bebé?</h2>
+    <p class="q-sub">Es clave para entender en qué etapa está tu abdomen.</p>
+    <div class="opts">
+      <div class="opt" data-value="reciente" onclick="pick(this,3,'tiempoParto')"><div class="opt-icon">🍼</div><div class="opt-text"><div class="opt-label">Menos de 6 meses</div><div class="opt-desc">Posparto reciente</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="medio" onclick="pick(this,3,'tiempoParto')"><div class="opt-icon">👶</div><div class="opt-text"><div class="opt-label">De 6 meses a 2 años</div><div class="opt-desc">Etapa de recuperación</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="antiguo" onclick="pick(this,3,'tiempoParto')"><div class="opt-icon">🧒</div><div class="opt-text"><div class="opt-label">De 2 a 5 años</div><div class="opt-desc">Tu abdomen todavía puede responder</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="antiguo" onclick="pick(this,3,'tiempoParto')"><div class="opt-icon">👦</div><div class="opt-text"><div class="opt-label">Más de 5 años</div><div class="opt-desc">Nunca es tarde para empezar</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 3: TIPO DE PARTO -->
+  <div class="screen" id="s3" data-name="tipo_parto">
+    <button class="back" onclick="go(2)">← Atrás</button>
+    <div class="q-tag">Pregunta 3 de 12</div>
+    <h2 class="q-title">¿Cómo fue tu parto?</h2>
+    <p class="q-sub">Cada tipo de parto deja un patrón diferente en el abdomen.</p>
+    <div class="opts">
+      <div class="opt" data-value="normal" onclick="pick(this,4,'tipoParto')"><div class="opt-icon">🌿</div><div class="opt-text"><div class="opt-label">Parto natural / vaginal</div><div class="opt-desc">Con o sin anestesia</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="cesarea" onclick="pick(this,4,'tipoParto')"><div class="opt-icon">🏥</div><div class="opt-text"><div class="opt-label">Cesárea</div><div class="opt-desc">Con guía especial para cesárea</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="multiples" onclick="pick(this,4,'tipoParto')"><div class="opt-icon">👩‍👧‍👦</div><div class="opt-text"><div class="opt-label">Tuve más de un bebé</div><div class="opt-desc">Partos diferentes a lo largo del tiempo</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 4: SÍNTOMAS (MÚLTIPLE) -->
+  <div class="screen" id="s4" data-name="sintomas">
+    <button class="back" onclick="go(3)">← Atrás</button>
+    <div class="q-tag">Pregunta 4 de 12</div>
+    <h2 class="q-title">¿Cuáles de estos síntomas sientes seguido?</h2>
+    <p class="q-sub">Marca todos los que te pasan.</p>
+    <div class="opts" data-multi="sintomas">
+      <div class="opt" data-value="escapes" onclick="toggle(this)"><div class="opt-icon">💧</div><div class="opt-text"><div class="opt-label">Se me sale la pipí al reír, estornudar o toser</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="inflada" onclick="toggle(this)"><div class="opt-icon">🎈</div><div class="opt-text"><div class="opt-label">Panza siempre inflada, aunque no haya comido</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="espalda" onclick="toggle(this)"><div class="opt-icon">🫀</div><div class="opt-text"><div class="opt-label">Dolor de espalda o de cintura constante</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="intimidad" onclick="toggle(this)"><div class="opt-icon">😔</div><div class="opt-text"><div class="opt-label">Dolor o molestia en la intimidad</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="embarazada" onclick="toggle(this)"><div class="opt-icon">🤰</div><div class="opt-text"><div class="opt-label">Mi panza parece que sigo embarazada</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="estrenimiento" onclick="toggle(this)"><div class="opt-icon">🧱</div><div class="opt-text"><div class="opt-label">Estreñimiento seguido</div></div><div class="opt-chk"></div></div>
+    </div>
+    <div class="sp16"></div>
+    <button class="btn" onclick="go(5)">CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 5: QUÉ HA PROBADO (MÚLTIPLE) -->
+  <div class="screen" id="s5" data-name="intentos">
+    <button class="back" onclick="go(4)">← Atrás</button>
+    <div class="q-tag">Pregunta 5 de 12</div>
+    <h2 class="q-title">¿Qué has probado para bajar la panza?</h2>
+    <p class="q-sub">Marca todo lo que has hecho. Así entendemos por qué no te funcionó.</p>
+    <div class="opts" data-multi="intentos">
+      <div class="opt" data-value="dieta" onclick="toggle(this)"><div class="opt-icon">🥗</div><div class="opt-text"><div class="opt-label">Dieta o comer más sano</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="gym" onclick="toggle(this)"><div class="opt-icon">🏋️</div><div class="opt-text"><div class="opt-label">Gimnasio o abdominales normales</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="faja" onclick="toggle(this)"><div class="opt-icon">🩱</div><div class="opt-text"><div class="opt-label">Faja posparto o cinturilla</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="estetica" onclick="toggle(this)"><div class="opt-icon">❄️</div><div class="opt-text"><div class="opt-label">Tratamientos estéticos (masajes, aparatos)</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="pastillas" onclick="toggle(this)"><div class="opt-icon">💊</div><div class="opt-text"><div class="opt-label">Pastillas o suplementos</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="nada" onclick="toggle(this)"><div class="opt-icon">🤷</div><div class="opt-text"><div class="opt-label">Nada todavía, no sabía qué hacer</div></div><div class="opt-chk"></div></div>
+    </div>
+    <div class="sp16"></div>
+    <button class="btn" onclick="go(6)">CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 6: EMPATÍA + MECANISMO -->
+  <div class="screen" id="s6" data-name="empatia">
+    <button class="back" onclick="go(5)">← Atrás</button>
+    <div class="emp-card">
+      <div class="emp-icon">💛</div>
+      <div class="emp-title">No estás sola.</div>
+      <div class="emp-text">
+        <strong>Las dietas y los abdominales normales no arreglan la panza de mamá.</strong> Los abdominales de toda la vida incluso pueden empujar la panza hacia afuera. No es falta de voluntad: nadie te explicó qué está pasando dentro de tu abdomen.<br><br>
+        Hay un músculo profundo, el <em>transverso</em>, que funciona como una faja natural. Se activa de una forma muy específica, con la respiración. Cuando aprendes a usarlo, tu abdomen empieza a recuperar firmeza <em>de adentro hacia afuera</em>.<br><br>
+        Ahora vamos a ver exactamente qué necesitas tú.
+      </div>
+    </div>
+    <button class="btn" onclick="go(7)">ENTENDIDO, CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 7: IMPACTO EN SU VIDA -->
+  <div class="screen" id="s7" data-name="impacto">
+    <button class="back" onclick="go(6)">← Atrás</button>
+    <div class="q-tag">Pregunta 6 de 12</div>
+    <h2 class="q-title">¿Cómo te está afectando la panza hoy?</h2>
+    <p class="q-sub">Sé honesta, es clave para armar el reto correcto para ti.</p>
+    <div class="opts">
+      <div class="opt" data-value="espejo" onclick="pick(this,8,'impacto')"><div class="opt-icon">🪞</div><div class="opt-text"><div class="opt-label">Evito verme en el espejo</div><div class="opt-desc">Me da pena mi propio cuerpo</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="pareja" onclick="pick(this,8,'impacto')"><div class="opt-icon">💑</div><div class="opt-text"><div class="opt-label">Me alejé de la intimidad con mi pareja</div><div class="opt-desc">No me siento deseable</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="ropa" onclick="pick(this,8,'impacto')"><div class="opt-icon">👙</div><div class="opt-text"><div class="opt-label">Evito la ropa ajustada y el traje de baño</div><div class="opt-desc">Elijo ropa para taparme</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="autoestima" onclick="pick(this,8,'impacto')"><div class="opt-icon">😓</div><div class="opt-text"><div class="opt-label">Me baja la autoestima en general</div><div class="opt-desc">Siento que perdí a la que era</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 8: TIEMPO DISPONIBLE -->
+  <div class="screen" id="s8" data-name="tiempo_dia">
+    <button class="back" onclick="go(7)">← Atrás</button>
+    <div class="q-tag">Pregunta 7 de 12</div>
+    <h2 class="q-title">¿Cuánto tiempo al día le puedes dedicar al reto?</h2>
+    <p class="q-sub">Vamos a armar una rutina que de verdad quepa en tu vida de mamá.</p>
+    <div class="opts">
+      <div class="opt" data-value="10" onclick="pick(this,9,'minutos')"><div class="opt-icon">⚡</div><div class="opt-text"><div class="opt-label">De 5 a 10 minutos</div><div class="opt-desc">Mientras el bebé duerme, funciona muy bien</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="20" onclick="pick(this,9,'minutos')"><div class="opt-icon">⏱️</div><div class="opt-text"><div class="opt-label">De 15 a 20 minutos</div><div class="opt-desc">Avanzas un poco más rápido</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="30" onclick="pick(this,9,'minutos')"><div class="opt-icon">🕐</div><div class="opt-text"><div class="opt-label">30 minutos o más</div><div class="opt-desc">Tu reto con rutinas extra</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 9: OBJETIVO -->
+  <div class="screen" id="s9" data-name="objetivo">
+    <button class="back" onclick="go(8)">← Atrás</button>
+    <div class="q-tag">Pregunta 8 de 12</div>
+    <h2 class="q-title">¿Cuál es tu mayor sueño cuando recuperes tu abdomen?</h2>
+    <p class="q-sub">Tu objetivo guía tu reto personalizado.</p>
+    <div class="opts">
+      <div class="opt" data-value="espejo" onclick="pick(this,10,'objetivo')"><div class="opt-icon">✨</div><div class="opt-text"><div class="opt-label">Verme al espejo y sonreír</div><div class="opt-desc">Recuperar mi autoestima y quererme</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="deseable" onclick="pick(this,10,'objetivo')"><div class="opt-icon">💕</div><div class="opt-text"><div class="opt-label">Sentirme deseable otra vez</div><div class="opt-desc">Reconectar con mi pareja sin pena</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="bano" onclick="pick(this,10,'objetivo')"><div class="opt-icon">👙</div><div class="opt-text"><div class="opt-label">Usar traje de baño sin pena</div><div class="opt-desc">Disfrutar sin esconderme</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="dolor" onclick="pick(this,10,'objetivo')"><div class="opt-icon">💪</div><div class="opt-text"><div class="opt-label">Que se acaben el dolor y los escapes</div><div class="opt-desc">Recuperar mi calidad de vida</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 10: COMPROMISO -->
+  <div class="screen" id="s10" data-name="compromiso">
+    <button class="back" onclick="go(9)">← Atrás</button>
+    <div class="q-tag">Pregunta 9 de 12</div>
+    <h2 class="q-title">Del 1 al 10, ¿qué tan lista estás para cambiar esto ahora?</h2>
+    <p class="q-sub">Sé honesta contigo. Esta respuesta define tu reto.</p>
+    <div style="margin-bottom:24px">
+      <div class="scale-nums">
+        <button class="s-btn" onclick="sclPick(this,11)">1</button><button class="s-btn" onclick="sclPick(this,11)">2</button><button class="s-btn" onclick="sclPick(this,11)">3</button><button class="s-btn" onclick="sclPick(this,11)">4</button><button class="s-btn" onclick="sclPick(this,11)">5</button><button class="s-btn" onclick="sclPick(this,11)">6</button><button class="s-btn" onclick="sclPick(this,11)">7</button><button class="s-btn" onclick="sclPick(this,11)">8</button><button class="s-btn" onclick="sclPick(this,11)">9</button><button class="s-btn" onclick="sclPick(this,11)">10</button>
+      </div>
+      <div class="scale-lbl"><span>Todavía no sé</span><span>¡100 % lista!</span></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 11: TIPO DE PANZA -->
+  <div class="screen" id="s11" data-name="tipo_panza">
+    <button class="back" onclick="go(10)">← Atrás</button>
+    <div class="q-tag">Pregunta 10 de 12</div>
+    <h2 class="q-title">¿Cómo describirías tu panza hoy?</h2>
+    <p class="q-sub">Elige la opción que más se parece a lo que ves.</p>
+    <div class="opts">
+      <div class="opt" data-value="infra" onclick="pick(this,12,'tipoPanza')"><div class="opt-icon">🔵</div><div class="opt-text"><div class="opt-label">"Pancita" caída debajo del ombligo</div><div class="opt-desc">Separación baja</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="supra" onclick="pick(this,12,'tipoPanza')"><div class="opt-icon">🟡</div><div class="opt-text"><div class="opt-label">Inflada arriba del ombligo</div><div class="opt-desc">Separación alta</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="total" onclick="pick(this,12,'tipoPanza')"><div class="opt-icon">🔴</div><div class="opt-text"><div class="opt-label">Inflada de arriba a abajo</div><div class="opt-desc">Separación completa</div></div><div class="opt-chk"></div></div>
+      <div class="opt" data-value="piel" onclick="pick(this,12,'tipoPanza')"><div class="opt-icon">⬜</div><div class="opt-text"><div class="opt-label">Flácida, con piel suelta (panza delantal)</div><div class="opt-desc">Separación con flacidez de piel</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 12: PESO ACTUAL -->
+  <div class="screen" id="s12" data-name="peso">
+    <button class="back" onclick="go(11)">← Atrás</button>
+    <div class="q-tag">Pregunta 11 de 12</div>
+    <h2 class="q-title">¿Cuál es tu peso actual?</h2>
+    <p class="q-sub">Usa el valor más cercano. Nos ayuda a calcular tu proyección personalizada.</p>
+    <div class="unit-toggle" role="group" aria-label="Unidad de peso"><button type="button" data-u="kg" class="on" onclick="setUnit('kg')">kg</button><button type="button" data-u="lb" onclick="setUnit('lb')">lb</button></div>
+    <div class="stepper-wrap">
+      <div class="stepper-value" id="pesoDisplay">70<span>kg</span></div>
+      <input type="range" class="slider" id="pesoSlider" min="40" max="150" value="70" oninput="onPesoChange(this.value)" aria-label="Peso actual">
+      <div class="stepper-row">
+        <button class="stepper-btn" onclick="stepPeso(-1)" aria-label="Menos">−</button>
+        <button class="stepper-btn" onclick="stepPeso(1)" aria-label="Más">+</button>
+      </div>
+    </div>
+    <button class="btn" onclick="go(13)">CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 13: ESTATURA -->
+  <div class="screen" id="s13" data-name="estatura">
+    <button class="back" onclick="go(12)">← Atrás</button>
+    <div class="q-tag">Pregunta 12 de 12</div>
+    <h2 class="q-title">¿Cuánto mides?</h2>
+    <p class="q-sub">Nos ayuda a calcular tu medida ideal con precisión.</p>
+    <div class="stepper-wrap">
+      <div class="stepper-value" id="alturaDisplay">160<span>cm</span></div>
+      <input type="range" class="slider" id="alturaSlider" min="140" max="200" value="160" oninput="onAlturaChange(this.value)" aria-label="Estatura">
+      <div class="stepper-row">
+        <button class="stepper-btn" onclick="stepAltura(-1)" aria-label="Menos">−</button>
+        <button class="stepper-btn" onclick="stepAltura(1)" aria-label="Más">+</button>
+      </div>
+      <div class="meta-tag" id="altFt"></div>
+    </div>
+    <button class="btn" onclick="go(14)">CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 14: PESO IDEAL -->
+  <div class="screen" id="s14" data-name="peso_ideal">
+    <button class="back" onclick="go(13)">← Atrás</button>
+    <div class="q-tag">Ya casi</div>
+    <h2 class="q-title">¿Cuál sería tu peso ideal?</h2>
+    <p class="q-sub">El peso en el que te sentirías más segura y cómoda.</p>
+    <div class="stepper-wrap">
+      <div class="stepper-value" id="idealDisplay">60<span>kg</span></div>
+      <input type="range" class="slider" id="idealSlider" min="40" max="149" value="60" oninput="onIdealChange(this.value)" aria-label="Peso ideal">
+      <div class="stepper-row">
+        <button class="stepper-btn" onclick="stepIdeal(-1)" aria-label="Menos">−</button>
+        <button class="stepper-btn" onclick="stepIdeal(1)" aria-label="Más">+</button>
+      </div>
+      <div class="meta-tag" id="metaTag">Meta: bajar 10 kg</div>
+    </div>
+    <button class="btn" onclick="go(15)">CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 15: OCASIÓN ESPECIAL -->
+  <div class="screen" id="s15" data-name="ocasion">
+    <button class="back" onclick="go(14)">← Atrás</button>
+    <div class="q-tag">Ya casi</div>
+    <h2 class="q-title">¿Hay alguna ocasión especial que te motive?</h2>
+    <p class="q-sub">Nos ayuda a armar tu motivación diaria.</p>
+    <div class="grid-2">
+      <div class="grid-opt" onclick="ocasionPick(this,'una boda',16)"><div class="grid-opt-icon">💍</div><div class="grid-opt-label">Una boda</div></div>
+      <div class="grid-opt" onclick="ocasionPick(this,'un viaje',16)"><div class="grid-opt-icon">✈️</div><div class="grid-opt-label">Un viaje</div></div>
+      <div class="grid-opt" onclick="ocasionPick(this,'volver al trabajo',16)"><div class="grid-opt-icon">💼</div><div class="grid-opt-label">Volver al trabajo</div></div>
+      <div class="grid-opt" onclick="ocasionPick(this,'las fotos con tu bebé',16)"><div class="grid-opt-icon">📸</div><div class="grid-opt-label">Fotos con mi bebé</div></div>
+      <div class="grid-opt" onclick="ocasionPick(this,'las fiestas de fin de año',16)"><div class="grid-opt-icon">🎄</div><div class="grid-opt-label">Las fiestas de fin de año</div></div>
+      <div class="grid-opt" onclick="ocasionPick(this,'',16)"><div class="grid-opt-icon">💗</div><div class="grid-opt-label">Ninguna en especial</div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 16: PLAZO -->
+  <div class="screen" id="s16" data-name="plazo">
+    <button class="back" onclick="go(15)">← Atrás</button>
+    <div class="q-tag">Último paso</div>
+    <h2 class="q-title">¿En cuánto tiempo te gustaría ver resultados?</h2>
+    <p class="q-sub">Así organizamos cómo seguir tu avance en ese plazo.</p>
+    <div class="opts">
+      <div class="opt" onclick="plazoPick(this,4,17)"><div class="opt-icon">⚡</div><div class="opt-text"><div class="opt-label">4 semanas</div><div class="opt-desc">Ver tus primeros cambios</div></div><div class="opt-chk"></div></div>
+      <div class="opt" onclick="plazoPick(this,8,17)"><div class="opt-icon">🌱</div><div class="opt-text"><div class="opt-label">8 semanas</div><div class="opt-desc">Avanzar con constancia</div></div><div class="opt-chk"></div></div>
+      <div class="opt" onclick="plazoPick(this,12,17)"><div class="opt-icon">🌸</div><div class="opt-text"><div class="opt-label">12 semanas</div><div class="opt-desc">Ir a tu ritmo, con más tiempo</div></div><div class="opt-chk"></div></div>
+    </div>
+  </div>
+
+  <!-- ETAPA 17: CARGA (~10 s, Franco L 4.1/4.2) -->
+  <div class="screen" id="s17" data-name="carga">
+    <div class="loading-wrap">
+      <div class="spin"></div>
+      <div class="load-title">Estamos creando tu plan personalizado…</div>
+      <p style="font-size:13.5px;color:var(--mid);margin-bottom:16px;font-weight:400">Cruzando tus respuestas para identificar tu tipo de panza de mamá</p>
+      <div class="load-bar-wrap"><div class="load-bar" id="lBar"></div></div>
+      <div class="load-status" id="lStatus">Iniciando análisis…</div>
+      <div class="load-steps">
+        <div class="lstep" id="ls1"><div class="sdot">1</div>Identificando tu tipo de separación…</div>
+        <div class="lstep" id="ls2"><div class="sdot">2</div>Cruzando síntomas y tipo de parto…</div>
+        <div class="lstep" id="ls3"><div class="sdot">3</div>Calculando tu proyección personalizada…</div>
+        <div class="lstep" id="ls4"><div class="sdot">4</div>Armando tu reto de 21 días…</div>
+        <div class="lstep" id="ls5"><div class="sdot">5</div>Terminando tu diagnóstico completo…</div>
+      </div>
+      <div class="mini-testi">
+        <div class="mini-testi-av"><img src="img/testi/a1.jpg" alt="" loading="lazy"></div>
+        <div>
+          <div class="mini-testi-text">"A los 21 días mi panza ya se sentía muy diferente, más firme."</div>
+          <div class="mini-testi-name">Daniela M. · Monterrey, N.L.</div>
+        </div>
+      </div>
+      <div class="mini-testi">
+        <div class="mini-testi-av"><img src="img/testi/a2.jpg" alt="" loading="lazy"></div>
+        <div>
+          <div class="mini-testi-text">"Ya no reconocía mi panza. Hoy me pongo ropa que tenía guardada."</div>
+          <div class="mini-testi-name">Karla S. · Guadalajara, Jal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETAPA 18: NOMBRE -->
+  <div class="screen" id="s18" data-name="nombre">
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:48px;margin-bottom:12px">🎯</div>
+      <div class="grad-title">¡Diagnóstico listo!</div>
+      <p style="font-size:14px;color:var(--mid);font-weight:400">Tu perfil <strong style="color:var(--charcoal);font-weight:600">responde muy bien</strong> al reto.</p>
+    </div>
+    <div class="lead-card">
+      <div class="lead-title">¿Cómo te llamamos?</div>
+      <div class="lead-sub">Tu nombre aparece en tu diagnóstico personalizado.</div>
+      <div class="inp-group">
+        <label class="inp-label" for="iName">Tu primer nombre</label>
+        <input type="text" id="iName" placeholder="Ej.: Ana" autocomplete="given-name" maxlength="30" />
+        <div class="inp-err" id="nameErr" hidden>Escribe tu nombre para ver tu diagnóstico.</div>
+      </div>
+      <button class="btn" onclick="goDiagnostico()">VER MI DIAGNÓSTICO COMPLETO →</button>
+      <p class="privacy" style="margin-top:10px">🔒 Tu información está 100 % segura. Sin spam.</p>
+    </div>
+  </div>
+
+  <!-- ETAPA 19: DIAGNÓSTICO -->
+  <div class="screen" id="s19" data-name="result_diagnostico">
+    <div class="res-header">
+       <p style="font-size:12.5px;opacity:.85;font-weight:400;margin-bottom:6px">Tu resultado puede empezar hoy</p>
+       <div class="res-title" id="diagHeadline" style="font-size:24px;line-height:1.3">Tú puedes sentir tu abdomen más firme desde la primera semana con el Reto Panza de Mamá 21</div>
+       <p style="font-size:11px;opacity:.85;line-height:1.4;margin-top:12px">Los resultados varían. Compara tu medida del día 1 con la de la primera semana.</p>
+    </div>
+
+    <div class="diag-bar-card">
+      <div class="profile-lbl">Tu indicador de separación abdominal</div>
+      <div class="diag-bar-track"><div class="marker" id="marker" style="left:62%"></div></div>
+      <div class="diag-bar-labels"><span>Leve</span><span>Moderada</span><span>Avanzada</span></div>
+      <div class="diag-metric-val">Tu grado estimado: <strong id="grauTexto">Moderado a avanzado</strong></div>
+      <p class="tiny-note">Estimación orientativa según tus respuestas, no es un diagnóstico médico. En la app aprendes a medirla con tus dedos.</p>
+    </div>
+
+    <div class="chart-card">
+       <div class="profile-lbl" style="margin-bottom:14px">Tus marcas de seguimiento</div>
+       <div style="display:grid;gap:10px;margin-bottom:14px;font-size:13px;line-height:1.5;color:var(--charcoal)">
+         <div><strong>Hoy:</strong> mide tu separación con los dedos a la altura del ombligo y toma una foto de referencia.</div>
+         <div><strong>Semana 1:</strong> repite la medida en el mismo lugar y compárala con el inicio.</div>
+         <div id="checkpointText"><strong>Semana 8:</strong> compara tus medidas, tus fotos y cómo te sientes.</div>
+       </div>
+       <div id="predText">Tu plazo marca cuándo comparar. El cambio solo se conoce midiendo, por eso la app te guía a medir.</div>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-lbl">Tu diagnóstico personalizado</div>
+      <div class="profile-title" id="diagCabecalho">Analizando tus respuestas…</div>
+      <div class="profile-text" id="diagTexto"></div>
+      <div class="sym-found">
+        <div class="sym-found-title">Señales de tu perfil</div>
+        <div id="diagTags"></div>
+      </div>
+    </div>
+
+    <!-- Agitación (Franco L 4.1: problema → agitación → solución) -->
+    <div class="alert-card" role="note">
+      <div class="alert-title">⚠️ Si no se trabaja, la separación suele seguir igual</div>
+      <ul id="riskList">
+        <li>Panza abultada aunque bajes de peso</li>
+        <li>Dolor de espalda y de cintura por falta de "faja" interna</li>
+        <li>Escapes de orina al reír, toser o cargar a tu bebé</li>
+        <li>Peor postura y más cansancio al final del día</li>
+      </ul>
+    </div>
+
+    <div class="testi">
+      <img class="testi-photo" src="img/life1.jpg" alt="Mamá haciendo un ejercicio en casa con su bebé" loading="lazy">
+      <div class="testi-body">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Hice gimnasio 8 meses después del parto y la panza seguía igual. Cuando empecé con los ejercicios correctos, a las 3 semanas ya notaba la diferencia. El día 21 mi hija me preguntó si había bajado de peso. No bajé de peso: mi abdomen volvió a sostenerme."</div>
+        <div class="testi-author">
+          <div class="testi-av"><img src="img/testi/a3.jpg" alt="" loading="lazy"></div>
+          <div><div class="testi-name">Mariana R., 34 años</div><div class="testi-detail">Mamá de 2 · Houston, TX</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi">
+      <img class="testi-photo" src="img/life2.jpg" alt="Mamá paseando con su carriola" loading="lazy">
+      <div class="testi-body">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Usaba toalla todos los días. Pensé que era normal después del parto. Cuando supe que era la separación del abdomen y empecé el reto, en 2 semanas los escapes bajaron muchísimo."</div>
+        <div class="testi-author">
+          <div class="testi-av"><img src="img/testi/a4.jpg" alt="" loading="lazy"></div>
+          <div><div class="testi-name">Julieta C., 38 años</div><div class="testi-detail">Mamá de 3 · Ciudad de México</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="testi-note" data-testi-note>Testimonios ilustrativos. Los resultados varían de persona a persona.</p>
+
+    <button class="btn btn-pulse" onclick="go(20)">✅ VER MI PLAN PERSONALIZADO →</button>
+  </div>
+
+  <!-- ETAPA 20: PERSUASIVA / DESEO -->
+  <div class="screen" id="s20" data-name="mecanismo">
+    <button class="back" onclick="go(19)">← Atrás</button>
+    <h2 class="persuasive-headline">¿Por qué algunas mamás recuperan su abdomen <em>fácil</em> y tú luchas sin ver resultado?</h2>
+    <div class="photo-tarja-wrap">
+      <img src="img/mech.jpg" alt="Mamá haciendo respiración profunda en casa" loading="lazy">
+      <div class="photo-tarja"><span style="font-size:16px">🔥</span><span class="photo-tarja-text">10 minutos al día · En casa</span></div>
+    </div>
+    <div class="persuasive-body">
+      Mientras te esfuerzas con gimnasio y dieta, tu abdomen sigue separado porque el músculo profundo sigue "dormido". La dieta no lo despierta. Los abdominales no lo despiertan. La faja tampoco: solo lo sostiene por fuera.
+      <br><br>
+      Resultado: la panza sigue igual, aunque hagas "todo bien".
+    </div>
+    <div class="persuasive-highlight">
+      💚 <strong>Con el Reto Panza de Mamá 21</strong> despiertas tu músculo profundo por etapas: respirar bien, activar tu faja natural y fortalecer todo tu abdomen, sin dietas, sin gimnasio y en solo 10 minutos al día.
+    </div>
+    <button class="btn btn-pulse" onclick="go(21)">CONTINUAR →</button>
+  </div>
+
+  <!-- ETAPA 21: TESTIMONIOS -->
+  <div class="screen" id="s21" data-name="testimonios">
+    <button class="back" onclick="go(20)">← Atrás</button>
+    <div style="text-align:center;margin-bottom:18px">
+      <div class="res-badge" style="color:var(--rose);opacity:1">✦ Historias de mamás ✦</div>
+      <div class="profile-title" style="font-size:20px">Mamás que ya recuperaron su abdomen</div>
+      <p class="q-sub" style="margin-top:6px">Mira a quienes pasaron por lo mismo que tú</p>
+    </div>
+    <div class="testi">
+      <img class="testi-photo" src="img/life3.jpg" alt="Mamá sonriendo frente al espejo" loading="lazy">
+      <div class="testi-body"><div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Después de mi segundo bebé no reconocía mi panza. A las 3 semanas del reto ya sentía mi cintura otra vez. Hoy me pongo ropa que tenía guardada desde hace años."</div>
+        <div class="testi-author"><div class="testi-av"><img src="img/testi/a5.jpg" alt="" loading="lazy"></div><div><div class="testi-name">Carolina S., 29 años</div><div class="testi-detail">Mamá de 2 · Los Ángeles, CA</div></div></div>
+      </div>
+    </div>
+    <div class="testi">
+      <img class="testi-photo" src="img/life4.jpg" alt="Mamá haciendo un ejercicio en cuatro apoyos" loading="lazy">
+      <div class="testi-body"><div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Me daba mucha pena ponerme de lado en la playa por la pancita. Con 10 minutos al día, en unas semanas sentí la panza mucho más plana. Recuperé mi autoestima."</div>
+        <div class="testi-author"><div class="testi-av"><img src="img/testi/a6.jpg" alt="" loading="lazy"></div><div><div class="testi-name">Brenda O., 31 años</div><div class="testi-detail">Mamá de 1 · Puebla, Pue.</div></div></div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-body"><div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Ya me había rendido después de la cesárea. Es lo primero que de verdad me funcionó sin gimnasio ni dietas raras."</div>
+        <div class="testi-author"><div class="testi-av"><img src="img/testi/a7.jpg" alt="" loading="lazy"></div><div><div class="testi-name">Patricia L., 36 años</div><div class="testi-detail">Mamá de 2 · Phoenix, AZ</div></div></div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-body"><div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Tenía dolor de espalda todos los días y nadie me decía por qué. Desde que hago el reto, el dolor bajó junto con la panza."</div>
+        <div class="testi-author"><div class="testi-av"><img src="img/testi/a8.jpg" alt="" loading="lazy"></div><div><div class="testi-name">Vanessa N., 33 años</div><div class="testi-detail">Mamá de 3 · Bogotá, Colombia</div></div></div>
+      </div>
+    </div>
+    <p class="testi-note" data-testi-note>Testimonios ilustrativos. Los resultados varían de persona a persona.</p>
+    <button class="btn btn-pulse" onclick="go(22)">✅ VER MI OFERTA →</button>
+  </div>
+
+  <!-- ETAPA 22: OFERTA (orden de Franco, L 4.2 ≈51:56-71:39) -->
+  <div class="screen" id="s22" data-name="offer">
+    <!-- 1. Imagen principal y titular -->
+    <div style="text-align:center;margin-bottom:14px">
+      <div class="res-badge" style="color:var(--rose);opacity:1">✦ Tu plan personalizado ✦</div>
+      <h2 class="offer-h1" id="offerTitle">Tu Reto Panza de Mamá 21 personalizado está listo</h2>
+    </div>
+    <img class="mockup" src="img/mockup.png" width="1080" height="1080" alt="La app del Reto Panza de Mamá 21 en un celular">
+
+    <!-- 2. Hoy / En 21 días -->
+    <div class="hoy-card">
+      <div class="hoy-col">
+        <div class="hoy-head red">Hoy</div>
+        <div class="lvl"><span>Separación abdominal</span><div class="lvl-bar"><i style="width:75%" class="r"></i></div><b class="r">Alta</b></div>
+        <div class="lvl"><span>Firmeza del abdomen</span><div class="lvl-bar"><i style="width:25%" class="r"></i></div><b class="r">Baja</b></div>
+        <div class="lvl"><span>Dolor de espalda</span><div class="lvl-bar"><i style="width:70%" class="r"></i></div><b class="r">Frecuente</b></div>
+      </div>
+      <div class="hoy-col">
+        <div class="hoy-head green">En 21 días</div>
+        <div class="lvl"><span>Separación abdominal</span><div class="lvl-bar"><i style="width:30%" class="g"></i></div><b class="g">Menor</b></div>
+        <div class="lvl"><span>Firmeza del abdomen</span><div class="lvl-bar"><i style="width:80%" class="g"></i></div><b class="g">Alta</b></div>
+        <div class="lvl"><span>Dolor de espalda</span><div class="lvl-bar"><i style="width:20%" class="g"></i></div><b class="g">Ocasional</b></div>
+      </div>
+    </div>
+    <p class="tiny-note center">Ilustración del objetivo del reto. Los resultados varían de persona a persona.</p>
+
+    <!-- 3. Alerta -->
+    <div class="alert-card"><div class="alert-title" id="offerAlert">⚠️ Tu perfil responde bien a la activación del músculo profundo</div><div>Las primeras 3 semanas son las que más se notan. Empieza hoy y mide tu avance el día 7.</div></div>
+
+    <!-- 4-6. Stack, precio, temporizador -->
+    <div class="offer-card" id="offerCard">
+      <div class="offer-badges"><span class="offer-badge-pill">🏆 EL MÁS ELEGIDO</span><span class="offer-badge-pill">📱 App en tu celular</span></div>
+      <div class="offer-title">Reto Panza de Mamá 21 + Bonos</div>
+      <div class="offer-subtitle">⚡ El camino más rápido para reactivar tu abdomen sin gimnasio, sin dietas y sin cirugía</div>
+      <hr class="offer-divider">
+      <div class="offer-included-lbl">✅ Lo que incluye tu plan:</div>
+      <ul class="offer-list">
+        <li><span>App con el reto de 21 días: ejercicios guiados con temporizador, 10 min al día</span><span class="offer-item-price">$47</span></li>
+        <li><span>Test de los dedos: mide tu separación y mira tu avance en una gráfica</span><span class="offer-item-price">$17</span></li>
+        <li><span>Guía especial para cesárea y separación de hace años</span><span class="offer-item-price">$27</span></li>
+        <li><span>Suelo pélvico: adiós a los escapes de pipí</span><span class="offer-item-price">$37</span></li>
+        <li><span class="offer-badge-new">Bono</span><span>Lo que NO debes hacer con diástasis</span><span class="offer-item-price">$19</span></li>
+        <li><span class="offer-badge-new">Bono</span><span>Rutina express de 5 minutos para los días difíciles</span><span class="offer-item-price">$17</span></li>
+        <li><span class="offer-badge-new">Bono</span><span>Postura al cargar y amamantar a tu bebé</span><span class="offer-item-price">$24</span></li>
+        <li><span class="offer-badge-new">Bono</span><span>Recordatorios diarios en tu celular</span><span class="offer-item-price">$9</span></li>
+      </ul>
+      <div class="stack-total">Valor total: <s>$197 USD</s></div>
+      <div class="today-only">Oferta válida solo por hoy</div>
+      <div class="price-wrap">
+        <div class="price-old">De $47 USD</div>
+        <div class="price-now"><span class="price-prefix">$</span>9<span class="price-cents"> USD</span></div>
+        <div class="price-note">🔒 Un solo pago · ≈ 170 pesos mexicanos · Acceso de por vida</div>
+      </div>
+      <div class="timer" aria-live="polite">Esta oferta termina en: <b id="timer">10:00</b></div>
+      <a class="offer-cta-white" data-checkout href="#" onclick="return goCheckout(this)">✅ Recibir mi plan · $9 USD →</a>
+      <div class="offer-pin-note">📌 Pagas una vez y es tuyo para siempre</div>
+    </div>
+
+    <!-- 8. Garantía -->
+    <div class="guarantee">
+      <div class="guar-medal">🥇</div>
+      <div class="guar-text"><strong>Garantía de 30 días</strong>Riesgo CERO. Si en 30 días no sientes tu abdomen más firme, te devolvemos tu dinero. Basta con un correo.</div>
+    </div>
+
+    <div style="text-align:center;margin:22px 0 12px"><div class="profile-title" style="font-size:17px">¡Todo en una app fácil, en tu celular!</div></div>
+    <div class="app-slider" id="appSlider">
+      <div class="app-track" id="appTrack">
+        <img src="img/app1.jpg" class="app-slide" alt="Pantalla Hoy de la app" loading="lazy">
+        <img src="img/app2.jpg" class="app-slide" alt="Ejercicio guiado con temporizador" loading="lazy">
+        <img src="img/app3.jpg" class="app-slide" alt="Gráfica del test de los dedos" loading="lazy">
+      </div>
+      <div class="app-dots"><span class="active"></span><span></span><span></span></div>
+    </div>
+
+    <!-- 7. Testimonios (imágenes + 2 vídeos) -->
+    <div style="text-align:center;margin:22px 0 14px"><div class="profile-title" style="font-size:17px">Las que ya empezaron ya notan la diferencia</div></div>
+    <div id="videoRow" class="video-row" hidden></div>
+    <div class="testi">
+      <img class="testi-photo" src="img/life5.jpg" alt="Mamá revisando la app del reto" loading="lazy">
+      <div class="testi-body"><div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Lo compré sin muchas expectativas, solo quería que se me quitara el dolor de espalda. No esperaba que mi panza también cambiara tan rápido."</div>
+        <div class="testi-author"><div class="testi-av"><img src="img/testi/a9.jpg" alt="" loading="lazy"></div><div><div class="testi-name">Tatiana R., 35 años</div><div class="testi-detail">Mamá de 1 · Miami, FL</div></div></div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-body"><div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Pensé que ya no tenía remedio, mi hijo ya tiene 4 años. En unas semanas sentí mi abdomen más firme. Qué bueno que no me rendí."</div>
+        <div class="testi-author"><div class="testi-av"><img src="img/testi/a10.jpg" alt="" loading="lazy"></div><div><div class="testi-name">Larissa P., 30 años</div><div class="testi-detail">Mamá de 1 · San Antonio, TX</div></div></div>
+      </div>
+    </div>
+    <p class="testi-note" data-testi-note>Testimonios ilustrativos. Los resultados varían de persona a persona.</p>
+
+    <div class="summary-card">
+      <div class="summary-title">En resumen…</div>
+      <div class="summary-item">💧 <div>Tu panza de mamá tiene solución, sin gimnasio, sin dietas y sin cirugía.</div></div>
+      <div class="summary-item">⏱️ <div>10 minutos al día bastan para activar el músculo correcto.</div></div>
+      <div class="summary-item">📅 <div>Mides tu avance con tus dedos el día 1, el día 7 y el día 21.</div></div>
+      <div class="summary-item">🛡️ <div>Tienes 30 días de garantía, sin riesgo para ti.</div></div>
+      <div class="summary-item">💛 <div>No estás sola: le pasa a 6 de cada 10 mamás.</div></div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-title">Preguntas frecuentes</div>
+      <div class="faq-item"><strong>¿Sirve si tuve cesárea?</strong>Sí. Tiene una guía especial para cesárea. Espera a que tu médico te dé de alta (normalmente 8 semanas) antes de empezar.</div>
+      <div class="faq-item"><strong>¿Y si mi bebé nació hace años?</strong>También. El músculo profundo se puede entrenar en cualquier momento.</div>
+      <div class="faq-item"><strong>¿Necesito aparatos?</strong>No. Todo es en casa, en el piso, con tu celular.</div>
+      <div class="faq-item"><strong>¿Cómo lo recibo?</strong>Al pagar te llega un correo con el botón para entrar a tu app. Entras con el mismo correo, sin contraseña, y la instalas en tu celular.</div>
+      <div class="faq-item"><strong>¿Es una suscripción?</strong>No. Es un solo pago de $9 USD y es tuyo para siempre.</div>
+    </div>
+
+    <div class="about-card">
+      <div class="about-tags"><span class="about-tag">Hecho para mamás</span><span class="about-tag">10 minutos al día</span><span class="about-tag">Sin aparatos</span></div>
+      <div class="about-text">El Reto Panza de Mamá 21 junta los ejercicios que se usan en la recuperación del abdomen después del parto (respiración, activación del transverso, suelo pélvico y fuerza suave) en un plan de 21 días que cabe en la siesta de tu bebé. <strong>Estás a un clic de empezar el camino que no solo cambia tu panza: también te devuelve la seguridad y la energía.</strong> No dejes para después lo que puedes empezar hoy.</div>
+      <a class="btn btn-pulse" data-checkout href="#" onclick="return goCheckout(this)">QUIERO EMPEZAR MI RETO →</a>
+    </div>
+
+    <!-- 8. Compra segura -->
+    <p class="privacy" style="margin-top:4px">🔒 Compra segura · Acceso inmediato a tu app · Satisfacción garantizada</p>
+    <p class="disclaimer">Aviso médico: este reto es educativo y no sustituye la consulta con tu médico o fisioterapeuta de suelo pélvico. No es un diagnóstico. Espera el alta médica (unas 6 semanas tras parto vaginal y 8 tras cesárea). Si notas un bulto que sale por el ombligo, dolor, sangrado o una separación de más de 3 dedos, consulta antes de empezar. Si estás embarazada, no lo hagas sin indicación profesional.</p>
+  </div>
+
+</div>
+
+<script src="attrib.js?v=1" data-page="quiz"></script>
+<script src="quiz.js?v=1"></script>
+</body>
+</html>
