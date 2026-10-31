@@ -23,7 +23,7 @@
   var sid = ss("dia_sid");
   if (!sid) { sid = (Date.now().toString(36) + Math.random().toString(36).slice(2, 10)); ss("dia_sid", sid); }
   window.DIA_SID = sid;
-  if (/[?&]reset=1/.test(location.search)) { try { sessionStorage.clear(); } catch (e) {} location.replace(location.pathname); }
+  if (/[?&]reset=1/.test(location.search)) { try { sessionStorage.clear(); } catch (e) {} location.replace(location.pathname + location.search.replace(/[?&]reset=1/, "").replace(/^&/, "?")); return; }
   function track(step, name, ev) {
     if (!C.TRACK_URL || /PENDIENTE/.test(C.TRACK_URL)) { if (window.console) console.log("[track]", step, name, ev || "view"); return; }
     var body = JSON.stringify({ sid: sid, step: step, name: name, ev: ev || "view", offer: C.OFFER || "diastasis", utm: ss("dia_qs") || "" });
