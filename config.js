@@ -30,5 +30,8 @@ window.DIA_CONFIG = {
 
   SHOW_TESTIMONIAL_NOTE: true,
   // Vídeos testimonio (Franco L 4.4: 2 por embudo). Vacío = no se muestran.
-  VIDEOS: []
+  VIDEOS: [
+    { name: "Andrea", city: "Monterrey, N.L.", src: "video/testimonio-1.mp4", poster: "video/testimonio-1.jpg" },
+    { name: "Gabriela", city: "Houston, TX", src: "video/testimonio-2.mp4", poster: "video/testimonio-2.jpg" }
+  ]
 };
