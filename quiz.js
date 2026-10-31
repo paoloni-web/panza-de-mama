@@ -260,6 +260,11 @@
     try {
       var u = new URL(url);
       if (state.nombre && !u.searchParams.has("name")) u.searchParams.set("name", state.nombre);
+      // UTMs + id de sesión para atribuir la venta al creativo en el panel (lo mismo que hace attrib.js en el funnel 1).
+      var q = ss("dia_qs") || (function () { try { return localStorage.getItem("dia_ft"); } catch (e) { return ""; } })() || "";
+      q.split("&").forEach(function (kv) { var p = kv.split("="); if (p[0] && !u.searchParams.has(p[0])) u.searchParams.set(p[0], decodeURIComponent(p[1] || "")); });
+      u.searchParams.set("sac_sid", sid); if (!u.searchParams.has("sck")) u.searchParams.set("sck", sid);
+      try { localStorage.setItem("dia_sid", sid); } catch (e) {}
       url = u.toString();
     } catch (e) {}
     a.href = url; // attrib.js añade UTMs y el id de sesión en la fase de captura
