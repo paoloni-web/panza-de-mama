@@ -158,10 +158,17 @@
     var err = document.getElementById("nameErr");
     if (!name) { err.hidden = false; el.focus(); return; }
     err.hidden = true;
-    state.nombre = name.split(" ")[0].slice(0, 20);
-    state.nombre = state.nombre.charAt(0).toUpperCase() + state.nombre.slice(1);
+    // Primer nombre con mayúscula inicial: "maría ángeles" → "María"; "JOSÉ" → "José".
+    state.nombre = name.split(/\s+/)[0].slice(0, 20).toLowerCase().replace(/(^|[-'’])(\S)/g, function (m, a, b) { return a + b.toUpperCase(); });
+    el.blur();
     go(19);
   }
+  // Tecla "Ir"/Enter del teclado del móvil: antes no hacía nada.
+  (function () {
+    var el = document.getElementById("iName");
+    if (el) el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.keyCode === 13) { e.preventDefault(); goDiagnostico(); } });
+    if (el) el.addEventListener("input", function () { if (el.value.trim()) document.getElementById("nameErr").hidden = true; });
+  })();
 
   // ===== DIAGNÓSTICO (4 perfiles, como el original) =====
   function getProfile() {
