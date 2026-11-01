@@ -40,3 +40,11 @@ a.offer-cta-white,a.btn{display:block;text-align:center;text-decoration:none;box
 @media (prefers-reduced-motion:reduce){.btn-pulse{animation:none!important}.screen{animation:none!important}}
 
 .mockup,.hero-img,img[width][height]{height:auto}
+/* Oferta según Franco (L 2.3): promesa, valor total vs. precio de hoy, garantía atada al plazo y precio introductorio */
+.promise{margin:6px 0 16px;padding:16px 18px;border-radius:var(--radius);background:#fff;border:2px solid var(--rose);box-shadow:var(--shadow)}
+.promise-k{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rose);margin-bottom:4px}
+.promise p{margin:0;font-size:17px;font-weight:600;line-height:1.45;color:var(--charcoal)}
+.stack-total{font-size:15px;line-height:1.45;opacity:1}
+.stack-total b{font-size:18px;white-space:nowrap}
+.gline{display:flex;gap:8px;align-items:flex-start;text-align:left;margin:10px 0 0;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.14);color:#fff;font-size:14px;line-height:1.4}
+.intro-note{text-align:center;color:#fff;opacity:.92;font-size:13.5px;margin:8px 0 2px}
